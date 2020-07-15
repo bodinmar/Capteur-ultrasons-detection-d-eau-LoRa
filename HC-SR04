@@ -18,7 +18,8 @@ LoRaModem modem;
 // Décommentez si vous utilisez une puce Murata comme module
 // LoRaModem modem(Serial1);
 
-
+String msg; 
+float distance;
 bool sent;
 
 HCSR04 hcsr04(TRIG_PIN, ECHO_PIN, 20, 4000);
@@ -43,21 +44,11 @@ void setup()
     Serial.println(modem.deviceEUI());
 
     // Connexion au réseau LoRa en mode OTAA
-    int connected = modem.joinOTAA(appEui, appKey);
+    int connected = modem.joinOTAA(SECRET_APP_EUI, SECRET_APP_KEY);
     if (!connected) {
       Serial.println("Un problème est survenu; êtes vous à l'intérieur? Déplacez-vous près d'une fenêtre et réessayez");
       while (1) {}
   }
-
-// Setup Si7021
-    pinMode(power, OUTPUT);
-    pinMode(GND, OUTPUT);
-
-    digitalWrite(power, HIGH);
-    digitalWrite(GND, LOW);
-
-    // Initialise les capteurs I2C et les ping
-    sensor.begin();
 }
 
 //---------------------------------------------------------------
