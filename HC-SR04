@@ -101,7 +101,7 @@ void loop()
   Serial.print("Distance : ");
 
   int duree = hcsr04.echoInMicroseconds();
-  int distance = (duree / 2) * 0.344; //0.344 vitesse du son (340 / 1000)
+  distance = (duree / 2) * 0.344; //0.344 vitesse du son (340 / 1000)
 
   Serial.print(distance);
   // Serial.print(hcsr04.distanceInMillimeters());
