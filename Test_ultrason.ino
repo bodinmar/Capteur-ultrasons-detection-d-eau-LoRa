@@ -5,8 +5,8 @@
 #include <hcsr04.h>
 
 
-#define TRIG_PIN 3
-#define ECHO_PIN 4
+#define TRIG_PIN 6
+#define ECHO_PIN 7
 
 #define SECRET_APP_EUI "Votre EUI" // TTN
 #define SECRET_APP_KEY "Votre APP KEY" // TTN
@@ -22,12 +22,6 @@ Module LoRa Arduino MKR WAN 1300 - https://www.arduino.cc/en/Tutorial/MKRWANFirs
 #include <MKRWAN.h>
 
 LoRaModem modem;
-
-// Décommentez si vous utilisez une puce Murata comme module
-
-// LoRaModem modem(Serial1);
-
-
 
 String msg; 
 
@@ -47,7 +41,7 @@ void setup()
 
 {
 
-    Serial.begin(9600);   // ouvre le port série USB à 9600 baud    
+    Serial.begin(115200);   // ouvre le port série USB à 115200 baud    
 
 
 
@@ -183,15 +177,9 @@ void loop()
 {
 
 // Programme principal
-
-
-
-  
-
+    
   Serial.print("Distance : ");
-
-
-
+    
   int duree = hcsr04.echoInMicroseconds();
 
   distance = (duree / 2) * 0.344; //0.344 vitesse du son (340 / 1000)
@@ -204,26 +192,16 @@ void loop()
 
   Serial.print(" mm");
 
-  Serial.println();
-
-  
-
-
 
   delay(1000);
-
- 
-
-    
 
     // Envoie les données sur le réseau LoRa
 
     sendInfo();
 
-    
 
     // Pause de X millisecondes
 
-    delay(120000);
+    delay(120000); // mesure toutes les 2 min
 
 }
