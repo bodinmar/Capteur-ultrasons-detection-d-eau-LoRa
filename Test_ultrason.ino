@@ -5,8 +5,8 @@
 #include <hcsr04.h>
 
 
-#define TRIG_PIN 6
-#define ECHO_PIN 7
+#define TRIG_PIN 7
+#define ECHO_PIN 6
 
 #define SECRET_APP_EUI "Votre EUI" // TTN
 #define SECRET_APP_KEY "Votre APP KEY" // TTN
