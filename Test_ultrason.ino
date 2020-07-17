@@ -146,7 +146,7 @@ void sendInfo()
 
   modem.beginPacket();
 
-  modem.write(msg); // anciennement modem.print
+  modem.print(msg); // ne pas mettre modem.write() sinon le decodeur TTN ne fonctionnera pas. 
 
   err = modem.endPacket(false);
 
